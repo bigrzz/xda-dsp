@@ -1,0 +1,123 @@
+@import url("https://fonts.googleapis.com/css2?family=Figtree:wght@400;500;600;700&family=Oswald:wght@500;600&display=swap");
+@import "tailwindcss";
+
+@theme {
+  --font-sans: "Figtree", ui-sans-serif, system-ui, sans-serif;
+  --font-display: "Oswald", ui-sans-serif, system-ui, sans-serif;
+
+  --color-bg: #0b0b0d;
+  --color-surface: #141417;
+  --color-raised: #1c1c21;
+  --color-fg: #f3f0ea;
+  --color-muted: #8d8a84;
+  --color-subtle: #6a6762;
+  --color-border: #2a2a30;
+  --color-primary: #d6272c;
+  --color-primary-fg: #fff7f5;
+  --color-ring: #d6272c;
+  --color-success: #3f9a6c;
+  --color-warn: #c4a056;
+
+  --radius-xs: 0.25rem;
+  --radius-sm: 0.5rem;
+  --radius-md: 0.75rem;
+  --radius-lg: 1rem;
+  --radius-xl: 1.5rem;
+  --radius-2xl: 2rem;
+
+  --text-2xs: 0.6875rem;
+}
+
+@layer base {
+  html {
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    background: var(--color-bg);
+    color: var(--color-fg);
+  }
+
+  html,
+  body,
+  #app {
+    min-height: 100svh;
+  }
+
+  body {
+    font-family: var(--font-sans);
+    background: var(--color-bg);
+    color: var(--color-fg);
+  }
+
+  button:not(:disabled),
+  [role="button"]:not(:disabled) {
+    cursor: pointer;
+  }
+
+  h1,
+  h2,
+  h3 {
+    text-wrap: balance;
+  }
+
+  p {
+    text-wrap: pretty;
+  }
+}
+
+@layer utilities {
+  .font-display {
+    font-family: var(--font-display);
+  }
+
+  .pressable {
+    transition: transform 150ms var(--ease-out, cubic-bezier(0.23, 1, 0.32, 1));
+  }
+
+  .pressable:active:not(:disabled) {
+    transform: scale(0.96);
+  }
+
+  .safe-top {
+    padding-top: max(0.75rem, env(safe-area-inset-top));
+  }
+
+  .safe-bottom {
+    padding-bottom: max(0.5rem, env(safe-area-inset-bottom));
+  }
+
+  .hue-spectrum {
+    background: linear-gradient(
+      to right,
+      #ff0000,
+      #ffff00,
+      #00ff00,
+      #00ffff,
+      #0000ff,
+      #ff00ff,
+      #ff0000
+    );
+  }
+
+  .hue-wheel {
+    background: conic-gradient(
+      from 0deg,
+      #ff0000,
+      #ffff00,
+      #00ff00,
+      #00ffff,
+      #0000ff,
+      #ff00ff,
+      #ff0000
+    );
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+}
